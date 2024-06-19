@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Flex, Text, Spacer, Container, Heading, Button, Image } from '@chakra-ui/react';
+import { Box, Flex, Text, Spacer, Container, Heading, Button, Image, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
 import img from '../../assets/skin-face.jpg';
 import littleBottle from '../../assets/little-bottle.jpg';
 import Link from "next/link"
@@ -43,7 +43,7 @@ const Home: React.FC = () => {
       <Flex as="header" py="2" px="8" alignItems="center">
         <Text fontSize="xl" fontWeight="300" color="white">SKIN</Text>
         <Spacer />
-        <Flex py="1" px="8" bg="rgba(150, 150, 150, 0.3)" borderRadius="12" backdropFilter="blur(10px)">
+        <Flex py="1" px="8" bg="rgba(150, 150, 150, 0.3)" borderRadius="12" backdropFilter="blur(10px)" >
           <Button {...buttonHeader}>Shop All</Button>
           <Button {...buttonHeader}>
             <Link href="/About" passHref>
@@ -51,6 +51,15 @@ const Home: React.FC = () => {
             </Link>
           </Button>
           <Button {...buttonHeader}>New</Button>
+          <Menu isLazy>
+            <MenuButton {...buttonHeader} px='16px'>More</MenuButton>
+            <MenuList bg="rgba(150, 150, 150, 0.3)" borderRadius="12" border='none' backdropFilter="blur(10px)">
+              {/* MenuItems are not rendered unless Menu is open */}
+              <MenuItem bg='none'>New Window</MenuItem>
+              <MenuItem bg='none'>Open Closed Tab</MenuItem>
+              <MenuItem bg='none'>Open File</MenuItem>
+            </MenuList>
+          </Menu>
         </Flex>
       </Flex>
       <Flex position="absolute" py="8" px="10" minWidth="100%" mt="9%">
