@@ -1,7 +1,8 @@
 import React from 'react';
 import { Box, Flex, Text, Spacer, Container, Heading, Button, Image } from '@chakra-ui/react';
 import img from '../../assets/skin-face.jpg';
-import littleBottle from '../../assets/little-bottle.jpg'
+import littleBottle from '../../assets/little-bottle.jpg';
+import Link from "next/link"
 
 const Home: React.FC = () => {
 
@@ -45,7 +46,11 @@ const Home: React.FC = () => {
         <Spacer />
         <Flex py="1" px="8" bg="rgba(150, 150, 150, 0.3)" borderRadius="12" backdropFilter="blur(10px)">
           <Button {...buttonHeader}>Shop All</Button>
-          <Button {...buttonHeader}>About Us</Button>
+          <Button {...buttonHeader}>
+            <Link href="/About" passHref>
+              About Us
+            </Link>
+          </Button>
           <Button {...buttonHeader}>New</Button>
         </Flex>
       </Flex>
