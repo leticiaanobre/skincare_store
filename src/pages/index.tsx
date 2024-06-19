@@ -22,8 +22,7 @@ const Home: React.FC = () => {
     }
     const buttonHeader = {
         color:"white",
-        variant:"outline",
-        border:"none",
+        variant:"ghost",
         fontWeight:"300",
         _hover: {
             bg:"none",
