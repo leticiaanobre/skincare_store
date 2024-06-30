@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Flex, Text, Heading, Button, Image } from '@chakra-ui/react';
 import imgFace from '../../assets/skin-face.jpg';
 import imgBody from '../../assets/body.jpg'; 
 import imgHair from '../../assets/hair.jpg'; 
 import littleBottle from '../../assets/little-bottle.jpg';
 
-const Home: React.FC<{ setBackgroundImage: (img: string) => void }> = ({ setBackgroundImage }) => {
+interface HomeProps {
+  setBackgroundStyle: (style: { type: string; value: string }) => void;
+}
+
+const Home: React.FC<HomeProps> = ({ setBackgroundStyle }) => {
   const [selectedProduct, setSelectedProduct] = useState<'face' | 'body' | 'hair'>('face');
 
   const products = {
@@ -14,21 +18,24 @@ const Home: React.FC<{ setBackgroundImage: (img: string) => void }> = ({ setBack
       image: littleBottle.src,
       name: 'Moisturizing',
       price: '$150',
-      details: 'Skincare Vital C hydrating Repair Creme'
+      details: 'Skincare Vital C hydrating Repair Creme',
+      background: imgFace.src
     },
     body: {
       description: 'An intense body cream that nourishes and revitalizes the skin, giving it a healthy glow.',
       image: littleBottle.src,
       name: 'Nourishing Body Cream',
       price: '$120',
-      details: 'Vital nutrients and antioxidants for your body'
+      details: 'Vital nutrients and antioxidants for your body',
+      background: imgBody.src
     },
     hair: {
       description: 'A rejuvenating hair mask that restores shine and strength to your hair.',
       image: littleBottle.src,
       name: 'Hair Repair Mask',
       price: '$90',
-      details: 'Revitalizing treatment for all hair types'
+      details: 'Revitalizing treatment for all hair types',
+      background: imgHair.src
     }
   };
 
@@ -47,14 +54,17 @@ const Home: React.FC<{ setBackgroundImage: (img: string) => void }> = ({ setBack
     }
   };
 
-  const handleButtonClick = (product: 'face' | 'body' | 'hair', img: string) => {
+  useEffect(() => {
+    setBackgroundStyle({ type: 'image', value: products[selectedProduct].background });
+  }, [selectedProduct, setBackgroundStyle]);
+
+  const handleButtonClick = (product: 'face' | 'body' | 'hair') => {
     setSelectedProduct(product);
-    setBackgroundImage(img);
   };
 
   return (
     <Box>
-      <Flex position="absolute" py="8" px="10" minWidth="100%" mt="9%">
+      <Flex position="absolute" py="8" px="10" minWidth="100%" bottom="5%">
         <Flex justifyContent="space-between" w="100%" alignItems="center">
           <Flex direction="column" gap="4">
             <Flex alignContent="start" justifyContent="start" direction="column">
@@ -62,9 +72,9 @@ const Home: React.FC<{ setBackgroundImage: (img: string) => void }> = ({ setBack
               <Heading fontSize="7xl" color="white" mb="4" fontWeight="300" letterSpacing="0.35rem" width="800px">perfect Foundation!</Heading>
             </Flex>
             <Flex mb="4">
-              <Button {...buttonStyle} onClick={() => handleButtonClick('face', imgFace.src)}>Face</Button>
-              <Button {...buttonStyle} onClick={() => handleButtonClick('body', imgBody.src)}>Body</Button>
-              <Button {...buttonStyle} onClick={() => handleButtonClick('hair', imgHair.src)}>Hair</Button>
+              <Button {...buttonStyle} onClick={() => handleButtonClick('face')}>Face</Button>
+              <Button {...buttonStyle} onClick={() => handleButtonClick('body')}>Body</Button>
+              <Button {...buttonStyle} onClick={() => handleButtonClick('hair')}>Hair</Button>
             </Flex>
             <Flex width="32rem">
               <Text color="white" fontSize="sm" bg="rgba(150, 150, 150, 0.3)" p="3" borderRadius="18" backdropFilter="blur(10px)">
