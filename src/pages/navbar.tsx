@@ -18,7 +18,7 @@ export default function Navbar() {
         <Text fontSize="xl" fontWeight="300" color="white">SKIN</Text>
         <Spacer />
         <Flex py="1" px="8" bg="rgba(150, 150, 150, 0.3)" borderRadius="12" backdropFilter="blur(10px)" >
-          <Link href="/HomePage" passHref >
+          <Link href="/" passHref >
             <Button {...buttonHeader} isActive={router.pathname === '/'}>
               Home
             </Button>
