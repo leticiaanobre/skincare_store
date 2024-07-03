@@ -7,40 +7,40 @@ interface NavbarProps {
 }
 
 export default function Navbar({ setBackgroundStyle }: NavbarProps) {
-    const router = useRouter();
-    const buttonHeader = {
-        color:"white",
-        variant:"ghost",
-        fontWeight:"300",
-        _hover: {
-            bg:"none",
-            color:"gray.700"
-        },
-    }
+  const router = useRouter();
+  const buttonHeader = {
+    color: "white",
+    variant: "ghost",
+    fontWeight: "300",
+    _hover: {
+      bg: "none",
+      color: "gray.700"
+    },
+  };
 
-    const handleBackgroundChange = (type: string, value: string) => {
-        setBackgroundStyle({ type, value });
-    }
+  const handleBackgroundChange = (type: string, value: string) => {
+    setBackgroundStyle({ type, value });
+  }
 
-    return(
-      <Flex as="header" py="2" px="8" alignItems="center" bg='none' position='relative' id="home">
-        <Text fontSize="xl" fontWeight="300" color="white">SKIN</Text>
+  return (
+    <Flex p="2" w='full' height="60px"> {/* Defina a altura aqui */}
+      <Flex as="header" px="8" alignItems="center" w='full' bg="var(--color-secondary)" borderRadius='12'>
+        <Text fontSize="xl" fontWeight="300" color="var(--color-primary)">SKIN</Text>
         <Spacer />
-        <Flex py="1" px="8" bg="rgba(150, 150, 150, 0.3)" borderRadius="12" backdropFilter="blur(10px)" >
+        <Flex py="1" px="8">
           <Link href="/" passHref>
-            <Button {...buttonHeader} isActive={router.pathname === '/'} >
+            <Button {...buttonHeader} color="var(--color-primary)" isActive={router.pathname === '/'}>
               Home
             </Button>
           </Link>
-          <Button {...buttonHeader} >Shop All</Button>
+          <Button {...buttonHeader} color="var(--color-primary)">Shop All</Button>
           <Link href="/About" passHref>
-            <Button {...buttonHeader} >
+            <Button {...buttonHeader} color="var(--color-primary)">
               About Us
             </Button>
           </Link>
-          <Button {...buttonHeader}>New</Button>
           <Menu isLazy>
-            <MenuButton {...buttonHeader} px='16px'>More</MenuButton>
+            <MenuButton {...buttonHeader} px='16px' color="var(--color-primary)">More</MenuButton>
             <MenuList bg="rgba(150, 150, 150, 0.3)" borderRadius="12" border='none' backdropFilter="blur(10px)">
               <MenuItem bg='none' onClick={() => handleBackgroundChange('color', 'yellow.500')}>New Window</MenuItem>
               <MenuItem bg='none' onClick={() => handleBackgroundChange('color', 'pink.500')}>Open Closed Tab</MenuItem>
@@ -49,5 +49,6 @@ export default function Navbar({ setBackgroundStyle }: NavbarProps) {
           </Menu>
         </Flex>
       </Flex>
-    )
+    </Flex>
+  );
 }
