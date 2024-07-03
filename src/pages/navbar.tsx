@@ -23,7 +23,7 @@ export default function Navbar({ setBackgroundStyle }: NavbarProps) {
   }
 
   return (
-    <Flex p="2" w='full' height="60px"> {/* Defina a altura aqui */}
+    <Flex p="2" w='full' height="60px">
       <Flex as="header" px="8" alignItems="center" w='full' bg="var(--color-secondary)" borderRadius='12'>
         <Text fontSize="xl" fontWeight="300" color="var(--color-primary)">SKIN</Text>
         <Spacer />
