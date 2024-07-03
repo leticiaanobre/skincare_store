@@ -5,11 +5,6 @@ import Navbar from "./navbar";
 import { useState } from 'react';
 import img from '../../assets/skin-face.jpg';
 
-// Define a type for the custom props
-interface CustomAppProps extends AppProps {
-  setBackgroundStyle: (style: { type: string; value: string }) => void;
-}
-
 export default function App({ Component, pageProps }: AppProps) {
   const [backgroundStyle, setBackgroundStyle] = useState({
     type: 'image',
@@ -29,7 +24,9 @@ export default function App({ Component, pageProps }: AppProps) {
         position="relative"
       >
         <Navbar setBackgroundStyle={setBackgroundStyle} />
-        <Component {...pageProps} setBackgroundStyle={setBackgroundStyle} />
+        <Box display="flex" flexDirection="column" height="calc(100vh - 60px)">
+          <Component {...pageProps} setBackgroundStyle={setBackgroundStyle} />
+        </Box>
       </Box>
     </ChakraProvider>
   );
