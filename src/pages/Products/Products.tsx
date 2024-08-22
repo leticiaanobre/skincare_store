@@ -2,6 +2,7 @@ import { Box, Button, Flex, Heading, Text, IconButton, AspectRatio } from "@chak
 import Image from 'next/image';
 import img from '../../../assets/model2.jpg';
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
+import { css } from "@emotion/react";
 
 export default function Products() {
     const scrollLeft = () => {
@@ -39,6 +40,7 @@ export default function Products() {
                         variant="ghost"
                         onClick={scrollLeft}
                         ml={2}
+                        borderRadius={40}
                     />
                     <IconButton
                         icon={<ChevronRightIcon />}
@@ -50,6 +52,7 @@ export default function Products() {
                         zIndex={1}
                         variant="ghost"
                         onClick={scrollRight}
+                        borderRadius={40}
                     />
                     <Flex
                         id="carousel"
@@ -61,6 +64,21 @@ export default function Products() {
                         width="full"
                         whiteSpace="nowrap"
                         h='full'
+                        css={css({
+                            '&::-webkit-scrollbar': {
+                                height: '8px', 
+                            },
+                            '&::-webkit-scrollbar-track': {
+                                background: '#f1f1f1',
+                            },
+                            '&::-webkit-scrollbar-thumb': {
+                                background: '#888',
+                                borderRadius: '24px',
+                            },
+                            '&::-webkit-scrollbar-thumb:hover': {
+                                background: '#555',
+                            },
+                        })}
                     >
                         {/* Replicando o produto */}
                         {Array.from({ length: 5 }).map((_, index) => (
