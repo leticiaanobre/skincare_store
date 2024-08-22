@@ -4,28 +4,28 @@ import img from '../../../assets/model2.jpg';
 
 export default function About() {
   return (
-    <Box height="100vh" id="about" overflowY="auto" display="flex" alignItems="center" justifyContent="center" pt='0' bgColor='background'>
-      <Flex direction="row" alignItems="center" justifyContent='space-around' p='3' height="100%" w='full'>
+    <Box height="100vh" id="about" overflowY="auto" display="flex" alignItems="center" justifyContent="center" p={12} bgColor='background'>
+      <Flex direction="row" alignItems="center" justifyContent='space-between' height="100%" w='full' bgColor="var(--color-tertiary)" borderRadius={12}>
         <Box
           position="relative"
-          width="30%"
-          height="90%"
+          width="40%"
+          height="100%"
           color="white"
           alignItems='center'
           p="3"
-          borderRadius="18"
+          // borderRadius="18"
         >
           <Image
             src={img}
             layout="fill"
             objectFit="cover"
-            style={{ borderRadius: '18px' }}
+            style={{ borderTopLeftRadius: '18px', borderBottomLeftRadius: '18px' }}
             alt="Model Image"
           />
         </Box>
-        <Flex direction='column' p='6' w='40%' align='center' gap='3'>     
-          <Text as="h1" fontSize="4xl" fontWeight="semibold" color="var(--color-primary)">
-            ABOUT
+        <Flex direction='column' p={12} w='50%' align='center' gap={5} h='90%' justifyContent='center' alignItems='start'>     
+          <Text as="h1" fontSize="4xl" fontWeight="bold" color="var(--color-primary)">
+            About
           </Text>
           <Text color="var(--color-primary)">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus voluptates similique, voluptatibus error fuga vero excepturi quasi exercitationem porro obcaecati, fugiat corporis.

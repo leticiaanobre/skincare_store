@@ -1,6 +1,7 @@
 :root {
   --color-primary: #67645E;
   --color-secondary: rgba(204, 204, 204, 0.6);
+  --color-tertiary: #E5E5E5;
   --color-input-light: #EAEAEA;
   --color-input-dark: #242424;
   --color-background-light: #EFEFEF;
