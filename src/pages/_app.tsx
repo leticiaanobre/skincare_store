@@ -1,7 +1,7 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { ChakraProvider, Box } from '@chakra-ui/react';
-import Navbar from "./navbar";
+import Navbar from "../components/Navbar/navbar";
 import { useState } from 'react';
 import img from '../../assets/skin-face.jpg';
 
