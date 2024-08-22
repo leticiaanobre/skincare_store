@@ -1,4 +1,4 @@
-import { Box, Flex, Text } from '@chakra-ui/react';
+import { Box, Flex, Heading, Text } from '@chakra-ui/react';
 import Image from 'next/image';
 import img from '../../../assets/model2.jpg';
 
@@ -24,9 +24,9 @@ export default function About() {
           />
         </Box>
         <Flex direction='column' p={12} w='50%' align='center' gap={5} h='90%' justifyContent='center' alignItems='start'>     
-          <Text as="h1" fontSize="4xl" fontWeight="bold" color="var(--color-primary)">
+          <Heading size="2xl"color="var(--color-primary)">
             About
-          </Text>
+          </Heading>
           <Text color="var(--color-primary)">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus voluptates similique, voluptatibus error fuga vero excepturi quasi exercitationem porro obcaecati, fugiat corporis.
           </Text>
