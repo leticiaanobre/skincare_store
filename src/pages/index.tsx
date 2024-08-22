@@ -6,6 +6,7 @@ import imgHair from '../../assets/hair.jpg';
 import littleBottle from '../../assets/little-bottle.jpg';
 import Initial from './Initial/Initial';
 import About from './About/About';
+import Products from './Products/Products';
 
 
 const Home = () => {
@@ -14,6 +15,7 @@ const Home = () => {
     <Box bg='background'>
       <Initial/>
       <About />
+      <Products />
     </Box>
   );
 }
