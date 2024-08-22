@@ -1,8 +1,12 @@
 import { Box, Button, Flex, Heading, Text, IconButton, AspectRatio } from "@chakra-ui/react";
 import Image from 'next/image';
-import img from '../../../assets/model2.jpg';
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import { css } from "@emotion/react";
+import img1 from '../../../assets/cocooil.jpg';
+import img2 from '../../../assets/dark-serum.jpg';
+import img3 from '../../../assets/moisturizer.jpg';
+import img4 from '../../../assets/refresh-cream.jpg';
+import img5 from '../../../assets/serum-application.jpg';
 
 export default function Products() {
     const scrollLeft = () => {
@@ -18,6 +22,43 @@ export default function Products() {
             carousel.scrollBy({ left: 300, behavior: 'smooth' });
         }
     };
+    const products = [
+        {
+            id: 1,
+            name: 'Tônico Facial',
+            description: 'Limpeza profunda e tonificação',
+            price: '$24.00',
+            image: img1,
+        },
+        {
+            id: 2,
+            name: 'Sérum Anti-Idade',
+            description: 'Reduza rugas e linhas finas',
+            price: '$45.00',
+            image: img2,
+        },
+        {
+            id: 3,
+            name: 'Creme Facial',
+            description: 'Nutrição intensa para sua pele',
+            price: '$30.00',
+            image: img3,
+        },
+        {
+            id: 4,
+            name: 'Máscara de Argila',
+            description: 'Purificação e renovação celular',
+            price: '$18.00',
+            image: img4,
+        },
+        {
+            id: 5,
+            name: 'Peptídeos',
+            description: 'LSua pele mais hidratada e fortificada',
+            price: '$22.00',
+            image: img5,
+        },
+    ];
 
     return (
         <Box minHeight="100vh" id="about" overflowY="auto" display="flex" alignItems="center" justifyContent="center" p={12}>
@@ -80,10 +121,10 @@ export default function Products() {
                             },
                         })}
                     >
-                        {/* Replicando o produto */}
-                        {Array.from({ length: 5 }).map((_, index) => (
+                        {/* Mapeando produtos para criar os itens do carrossel */}
+                        {products.map((product) => (
                             <Flex
-                                key={index}
+                                key={product.id}
                                 direction="column"
                                 alignItems="center"
                                 h="100%"
@@ -97,20 +138,20 @@ export default function Products() {
                                 <AspectRatio ratio={1} width="100%">
                                     <Box position="relative" color="white" alignItems="center" p="3">
                                         <Image
-                                            src={img}
+                                            src={product.image}
                                             layout="fill"
                                             objectFit="cover"
                                             style={{ borderRadius: '12px' }}
-                                            alt="Model Image"
+                                            alt={product.name}
                                         />
                                     </Box>
                                 </AspectRatio>
                                 <Flex direction="column" justifyContent="space-between" alignItems="flex-start" w="full" gap={4} p={4}>
-                                    <Heading size="md" color="primary">PEPITYDES</Heading>
-                                    <Text color="primary">Your skin more moisturizer than ever</Text>
+                                    <Heading size="md" color="primary">{product.name}</Heading>
+                                    <Text color="primary">{product.description}</Text>
                                     <Flex direction="row" alignItems="center" justifyContent="space-between" w="full">
                                         <Button variant="outline" borderColor="primary" color="primary" size="sm">Buy product</Button>
-                                        <Text color="primary" fontWeight="bold">$24.00</Text>
+                                        <Text color="primary" fontWeight="bold">{product.price}</Text>
                                     </Flex>
                                 </Flex>
                             </Flex>
