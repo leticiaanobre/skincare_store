@@ -54,18 +54,18 @@ export default function Products() {
         {
             id: 5,
             name: 'Peptídeos',
-            description: 'LSua pele mais hidratada e fortificada',
+            description: 'Sua pele mais hidratada e fortificada',
             price: '$22.00',
             image: img5,
         },
     ];
 
     return (
-        <Box minHeight="100vh" id="about" overflowY="auto" display="flex" alignItems="center" justifyContent="center" p={12}>
+        <Box minHeight="100vh" id="about" overflowY="auto" display="flex" alignItems="center" justifyContent="center" px={12} py={20}>
             <Flex direction="column" alignItems="center" height="100%" w="full" bgColor="tertiary" borderRadius={12}>
                 <Flex direction="row" alignItems="center" justifyContent="space-between" px={10} py={8} w='full'>
-                    <Heading size='2xl' color="primary">Title about the page</Heading>
-                    <Text color='primary' fontSize='lg'>Title about the page</Text>
+                    <Heading size='2xl' color="primary">Know all of our products</Heading>
+                    <Text color='primary' fontSize='md' align='end' w='40%'>Our cosmetics is made with special ingredients to maintain your skin young and moisturized</Text>
                 </Flex>
                 
                 {/* Carrossel */}
