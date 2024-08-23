@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Box, Button, Flex, Heading, Text, IconButton, AspectRatio, Drawer, DrawerOverlay, DrawerContent, DrawerHeader, DrawerBody, DrawerCloseButton } from "@chakra-ui/react";
+import { useState, useMemo } from "react";
+import { Box, Button, Flex, Heading, Text, IconButton, AspectRatio, Drawer, DrawerOverlay, DrawerContent, DrawerHeader, DrawerBody, DrawerCloseButton, DrawerFooter } from "@chakra-ui/react";
 import Image from 'next/image';
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import { css } from "@emotion/react";
@@ -43,6 +43,15 @@ export default function Products() {
         setSelectedProducts((prevProducts) => [...prevProducts, product]);
         setIsDrawerOpen(true); 
     };
+
+    // Calcular o valor total da compra
+    const totalPrice = useMemo(() => {
+        return selectedProducts.reduce((total, product) => {
+            // Removendo o símbolo de dólar e convertendo o preço para número
+            const price = parseFloat(product.price.replace('$', ''));
+            return total + price;
+        }, 0);
+    }, [selectedProducts]);
 
     const products: Product[] = [
         {
@@ -195,7 +204,17 @@ export default function Products() {
                         {selectedProducts.length > 0 ? (
                             selectedProducts.map((product, index) => (
                                 <Flex key={index} direction="row" alignItems="center" justifyContent="space-between" mb={4}>
-                                    <Image src={product.image} width={50} height={50} alt={product.name} />
+                                    <AspectRatio ratio={1} width="20%">
+                                        <Box position="relative">
+                                            <Image 
+                                                src={product.image} 
+                                                layout="fill"
+                                                objectFit="cover"
+                                                alt={product.name} 
+                                                style={{ borderRadius: '12px' }}
+                                            />
+                                        </Box>
+                                    </AspectRatio>
                                     <Box>
                                         <Heading size="sm" color="primary">{product.name}</Heading>
                                         <Text color="primary">{product.price}</Text>
@@ -203,9 +222,17 @@ export default function Products() {
                                 </Flex>
                             ))
                         ) : (
-                            <Text color="white">Your cart is empty.</Text>
+                            <Text color="primary">Your cart is empty.</Text>
                         )}
                     </DrawerBody>
+
+                    {/* Exibindo o valor total da compra no DrawerFooter */}
+                    <DrawerFooter borderTopWidth="1px" borderColor="primary">
+                        <Flex w="full" justifyContent="space-between">
+                            <Heading size="md" color="primary">Total:</Heading>
+                            <Heading size="md" color="primary">${totalPrice.toFixed(2)}</Heading>
+                        </Flex>
+                    </DrawerFooter>
                 </DrawerContent>
             </Drawer>
         </Box>
