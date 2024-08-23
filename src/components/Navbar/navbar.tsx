@@ -31,15 +31,15 @@ export default function Navbar() {
           <Button {...buttonHeader} color="var(--color-navbarText)" onClick={() => scrollToSection('about')}>
             About Us
           </Button>
-          <Button {...buttonHeader} color="var(--color-navbarText)">Shop All</Button>
-          <Menu isLazy>
+          <Button {...buttonHeader} color="var(--color-navbarText)" onClick={() => scrollToSection('products')}>Products</Button>
+          {/* <Menu isLazy>
             <MenuButton {...buttonHeader} px='16px' color="var(--color-navbarText)">More</MenuButton>
             <MenuList bg="rgba(150, 150, 150, 0.3)" borderRadius="12" border='none' backdropFilter="blur(10px)">
               <MenuItem bg='none'>New Window</MenuItem>
               <MenuItem bg='none'>Open Closed Tab</MenuItem>
               <MenuItem bg='none'>Open File</MenuItem>
             </MenuList>
-          </Menu>
+          </Menu> */}
         </Flex>
       </Flex>
     </Flex>

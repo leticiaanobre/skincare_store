@@ -61,7 +61,7 @@ export default function Products() {
     ];
 
     return (
-        <Box minHeight="100vh" id="about" overflowY="auto" display="flex" alignItems="center" justifyContent="center" px={12} py={20}>
+        <Box minHeight="100vh" id="products" overflowY="auto" display="flex" alignItems="center" justifyContent="center" px={12} py={20}>
             <Flex direction="column" alignItems="center" height="100%" w="full" bgColor="tertiary" borderRadius={12}>
                 <Flex direction="row" alignItems="center" justifyContent="space-between" px={10} py={8} w='full'>
                     <Heading size='2xl' color="primary">Know all of our products</Heading>
