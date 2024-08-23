@@ -20,9 +20,9 @@ export default function Navbar() {
   };
 
   return (
-    <Flex p="2" w='full' height="60px" position='relative'>
+    <Flex px={12} pt={4} w='full' height="60px" position='relative'>
       <Flex as="header" px="8" alignItems="center" w='full' bg="var(--color-secondary)" borderRadius='12'>
-        <Text fontSize="xl" fontWeight="300" color="var(--color-navbarText)">SKIN</Text>
+        <Text fontSize="xl" fontWeight="300" color="var(--color-primary)">SKIN</Text>
         <Spacer />
         <Flex py="1" px="8">
           <Button {...buttonHeader} color="var(--color-navbarText)" onClick={() => scrollToSection('home')}>

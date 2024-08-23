@@ -19,7 +19,7 @@ export default function About() {
             src={img}
             layout="fill"
             objectFit="cover"
-            style={{ borderTopLeftRadius: '18px', borderBottomLeftRadius: '18px' }}
+            style={{ borderTopLeftRadius: '12px', borderBottomLeftRadius: '12px' }}
             alt="Model Image"
           />
         </Box>
