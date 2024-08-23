@@ -1,4 +1,5 @@
-import { Box, Button, Flex, Heading, Text, IconButton, AspectRatio } from "@chakra-ui/react";
+import { useState } from "react";
+import { Box, Button, Flex, Heading, Text, IconButton, AspectRatio, Drawer, DrawerOverlay, DrawerContent, DrawerHeader, DrawerBody, DrawerCloseButton } from "@chakra-ui/react";
 import Image from 'next/image';
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import { css } from "@emotion/react";
@@ -8,7 +9,22 @@ import img3 from '../../../assets/moisturizer.jpg';
 import img4 from '../../../assets/refresh-cream.jpg';
 import img5 from '../../../assets/serum-application.jpg';
 
+// Importando o tipo StaticImageData do Next.js
+import type { StaticImageData } from 'next/image';
+
+// Definindo o tipo do produto
+interface Product {
+    id: number;
+    name: string;
+    description: string;
+    price: string;
+    image: StaticImageData; // Tipo que o Next.js usa para imagens estáticas
+}
+
 export default function Products() {
+    const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
+    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
     const scrollLeft = () => {
         const carousel = document.getElementById('carousel');
         if (carousel) {
@@ -22,7 +38,13 @@ export default function Products() {
             carousel.scrollBy({ left: 300, behavior: 'smooth' });
         }
     };
-    const products = [
+
+    const handleAddProduct = (product: Product) => {
+        setSelectedProducts((prevProducts) => [...prevProducts, product]);
+        setIsDrawerOpen(true); 
+    };
+
+    const products: Product[] = [
         {
             id: 1,
             name: 'Tônico Facial',
@@ -150,7 +172,9 @@ export default function Products() {
                                     <Heading size="md" color="primary">{product.name}</Heading>
                                     <Text color="primary">{product.description}</Text>
                                     <Flex direction="row" alignItems="center" justifyContent="space-between" w="full">
-                                        <Button variant="outline" borderColor="primary" color="primary" size="sm">Buy product</Button>
+                                        <Button variant="outline" borderColor="primary" color="primary" size="sm" onClick={() => handleAddProduct(product)}>
+                                            Buy product
+                                        </Button>
                                         <Text color="primary" fontWeight="bold">{product.price}</Text>
                                     </Flex>
                                 </Flex>
@@ -159,6 +183,31 @@ export default function Products() {
                     </Flex>
                 </Box>
             </Flex>
+
+            {/* Drawer para exibir os produtos selecionados */}
+            <Drawer isOpen={isDrawerOpen} placement="right" onClose={() => setIsDrawerOpen(false)} size="lg">
+                <DrawerOverlay />
+                <DrawerContent bg="tertiary">
+                    <DrawerCloseButton color="primary" />
+                    <DrawerHeader color="primary">Your Cart</DrawerHeader>
+
+                    <DrawerBody>
+                        {selectedProducts.length > 0 ? (
+                            selectedProducts.map((product, index) => (
+                                <Flex key={index} direction="row" alignItems="center" justifyContent="space-between" mb={4}>
+                                    <Image src={product.image} width={50} height={50} alt={product.name} />
+                                    <Box>
+                                        <Heading size="sm" color="primary">{product.name}</Heading>
+                                        <Text color="primary">{product.price}</Text>
+                                    </Box>
+                                </Flex>
+                            ))
+                        ) : (
+                            <Text color="white">Your cart is empty.</Text>
+                        )}
+                    </DrawerBody>
+                </DrawerContent>
+            </Drawer>
         </Box>
     );
 }
